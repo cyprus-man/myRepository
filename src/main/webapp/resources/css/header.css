@@ -1,0 +1,68 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	text-decoration: none; /*밑줄도 시작전에 다뺴고 시작함*/
+}
+
+#wrap {
+	width: 1000px;
+	margin: 0 auto; /*메뉴가 가운데 오게끔 설정함*/
+}
+
+#logo {
+	font-size: 60px;
+	color: #fff;
+	display: block;
+	float: left;
+}
+
+.clear {
+	claer: both;
+}
+
+header {
+	width: 1900px;
+	height: 60px;
+	background-color: #4B8AFF;
+}
+
+#hid a {
+	font-size: 20px;
+	color: rgba(255, 255, 255, 0.5);
+	position: relative;
+	margin: 0 150px;
+	line-height: 60px;
+}
+
+#hid a:hover {
+	color: #fff;
+}
+
+#wrap {
+	width: 1000px;
+	margin: 0 auto;
+}
+
+#searchDiv {
+	margin-left: 250px;
+	margin-top: 40px;
+}
+
+#searchDiv input {
+	width: 300px;
+	height: 60px;
+	margin: 10px 15px;
+	text-align: center;
+	border-radius: 5px;
+}
+#search {
+	width:100px;
+	height:60px;
+}
+#resultDiv {
+	border: 1px solid black;
+	width: 950px;
+	margin: 10px;
+}

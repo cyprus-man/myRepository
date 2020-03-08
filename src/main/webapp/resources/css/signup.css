@@ -1,0 +1,100 @@
+@charset "UTF-8";
+
+* {
+   margin: 0;
+   padding: 0;
+}
+
+input:focus {
+   outline: none;
+   text-indent: 0.5em;
+}
+
+#warp {
+   width: 1200px;
+   margin: 0 auto;
+   height: 930px;
+}
+
+#wrapForm {
+   width: 700px;
+   height: 332px;
+   margin: 150px auto 100px;
+}
+
+#checkForm {
+   width: 343px;
+   height: 350px;
+   float: left;
+   margin-top: -16px;
+}
+
+#inputCon {
+   width: 341px;
+   height: 37px;
+}
+
+#inputCon input {
+   width: 232px;
+   height: 31px;
+   margin-left: 40px;
+   float: right;
+   font-size: 20px;
+   border: 1px solid rgb(219, 219, 219);
+}
+
+h1 {
+   text-align: center;
+   font-size: 1.37rem;
+   margin-bottom: 50px;
+}
+
+h4 {
+   font-size: 14px;
+   clear: both;
+   width: auto;
+   height: 0;
+   margin-top: 15px;
+   line-height: 30px;
+   color: #595959;
+}
+
+p {
+   font-size: 11px;
+   font-weight: bold;
+   color: #818181;
+   clear: both;
+   text-align: center;
+   padding-bottom: 15px;
+   margin-top: 35px;
+   margin-left: 85px;
+   width: 250px;
+}
+
+#btnForm {
+   width: 200px;
+   height: 159px;
+   float: right;
+   margin-right: 130px;
+}
+
+#google, #face, #git {
+   height: 37px;
+   width: 200px;
+   margin-bottom: 15px;
+}
+
+#under {
+   width: 290px;
+   float: right;
+}
+
+#sign {
+   width: 290px;
+   height: 45px;
+   float: right;
+}
+
+#signText {
+   font-size: 12px;
+}

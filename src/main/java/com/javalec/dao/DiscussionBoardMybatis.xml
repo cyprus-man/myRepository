@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="DiscussionBoardNS">
+	<!-- 리스트위한 애들  -->
+	<select id="list" resultType="com.javalec.vo.DiscussionBoardVO" parameterType="integer" resultMap="discBoardForList">		
+		<![CDATA[select * from(select ROWNUM RN, a.* from(select * from discussion_Board order by discBoard_Id DESC) a where ROWNUM <=(#{page}*15)) where RN>=((#{page}-1)*15+1)]]>
+	</select>
+	<select id="listForLast" resultType="integer">		
+		select count(discBoard_Id) from discussion_Board
+	</select>
+	<!-- DISC BOARD MAPPING -->
+   <resultMap type="com.javalec.vo.DiscussionBoardVO" id="discBoardForList">
+      <id property="discBoardId"   column="discboard_Id" />      
+      <result property="writeDate" column="write_Date" />   
+      <result property="content"      column="content" />
+      <result property="email"      column="email"/>
+      <result property="readCount"  column="read_Count"/>
+      <result property="up"         column="up"/>
+      <result property="down"      column="down"/>
+      <result property="expired"    column="expired"/>     
+   </resultMap>
+   
+	
+	<!--  for detail -->
+	<select id="getDiscBoardById"  resultMap="discBoard" parameterType="integer">
+      SELECT * FROM 
+      discussion_board 
+      WHERE discboard_id = #{discBoardId}
+   </select>
+   <select id="getMatchById" resultMap="match">
+      select * FROM match WHERE match_id = #{matchId}
+   </select>
+   <select id="getTeamStatsListByMatch" resultMap="teamStats">
+      SELECT * FROM team_stat WHERE match_id = #{matchId}
+   </select>
+   <select id="getPartiListByMatch" resultMap="participant">
+      SELECT * FROM participant WHERE match_id = #{matchId}
+   </select>
+	
+   
+    <resultMap type="com.javalec.vo.DiscussionBoardVO" id="discBoard">
+      <id property="discBoardId"   column="discboard_Id" />      
+      <result property="writeDate" column="write_Date" />   
+      <result property="content"      column="content" />
+      <result property="email"      column="email"/>
+      <result property="readCount"  column="read_Count"/>
+      <result property="up"         column="up"/>
+      <result property="down"      column="down"/>
+      <result property="expired"    column="expired"/>
+      <association property="matchVO" column="match_Id" select="getMatchById"  />
+   </resultMap>
+   
+   <!-- match Mapping -->
+   <resultMap type="com.javalec.vo.MatchVO" id="match" >        
+      <id property="matchId" column = "match_id"/>
+      <result property="gameDuration" column="game_duration"/>
+      <collection property="teamStatsVOList" column="match_Id" select="getTeamStatsListByMatch" />
+      <collection property="participantVOList" column="match_id" select="getPartiListByMatch" />
+   </resultMap>
+   
+  <!--  Participants Mapping -->
+   <resultMap type="com.javalec.vo.ParticipantVO" id="participant">
+      <id property="matchId"                 column="match_id"/>
+      <result property="participantId"        column="participant_id"/>
+      <result property="summonerName"        column="summoner_name"/>
+      <result property="lane"              column="lane"/>
+      <result property="item0"              column="item0"/>
+      <result property="item1"              column="item1"/>
+      <result property="item2"              column="item2"/>
+      <result property="item3"             column="item3"/>
+      <result property="item4"              column="item4"/>
+      <result property="item5"              column="item5"/>
+      <result property="item6"              column="item6"/>
+      <result property="kills"              column="kills"/>
+      <result property="deaths"              column="deaths"/>
+      <result property="assists"             column="assists"/>
+      <result property="totalHeal"          column="total_heal"/>
+      <result property="totalDamageDealtToChampions" column="total_damage_dealt_to_champ"/>
+      <result property="totalDamageTaken"     column="total_damage_taken"/>
+      <result property="championId"           column="champ_id"/>
+   </resultMap>
+   
+   <!-- TeamStats Mapping -->
+   <resultMap type="com.javalec.vo.TeamStatsVO" id="teamStats">
+      <id property="matchId"            column="match_id"/>
+      <result property="statsId"         column="stats_id"/>
+      <result property="win"             column="win"/>
+      <result property="inhibitorKills" column="inhibitor_kills"/>
+      <result property="dragonKills"     column="dragon_kills"/>
+      <result property="towerKills"     column="tower_kills"/>
+      <result property="baronKills"     column="baron_kills"/>
+   </resultMap>
+   
+   
+   
+	
+
+	
+</mapper>
