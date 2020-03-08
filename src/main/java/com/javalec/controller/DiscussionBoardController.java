@@ -22,7 +22,7 @@ public class DiscussionBoardController {
 	
 	DiscussionBoardService service;
 	
-	
+//test
 	
 	@RequestMapping("/discussionBoard")	
 	public String discussionBoard(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
